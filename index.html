@@ -1,0 +1,587 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="en">\
+<head>\
+  <meta charset="UTF-8" />\
+  <meta name="viewport" content="width=device-width,initial-scale=1" />\
+  <title>QuestLearn \'97 Human-Made Student Portal (AI)</title>\
+  <!-- Custom font -->\
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">\
+  <!-- Background music -->\
+  <audio id="bgmusic" loop autoplay style="display:none">\
+    <source src="https://cdn.pixabay.com/audio/2022/10/16/audio_127b3cb734.mp3" type="audio/mpeg">\
+  </audio>\
+  <style>\
+    :root \{\
+      --primary: #7c3aed;\
+      --secondary: #06b6d4;\
+      --muted: #98a0b3;\
+      --bghaze: rgba(124,58,237,0.08);\
+      --bgdeep: #070925;\
+      --shadow: 0 8px 32px rgba(44,26,96,0.24);\
+    \}\
+    * \{ box-sizing: border-box; font-family: 'Inter', sans-serif; transition: background 0.3s, color 0.3s, box-shadow 0.3s;\}\
+    body \{\
+      margin: 0;\
+      min-height: 100vh;\
+      background:\
+        linear-gradient(120deg, #0f133d 0%, #5236c8 45%, #0f133d 70%),\
+        url('https://www.transparenttextures.com/patterns/diamond-upholstery.png'), /* texture overlay */\
+        var(--bgdeep);\
+      color: #e6ebf9;\
+      position: relative;\
+    \}\
+    body:before \{\
+      content: '';\
+      position: fixed; left:0;top:0;width:100vw;height:100vh;\
+      background: url('https://www.transparenttextures.com/patterns/squairy.png');\
+      opacity: 0.19;\
+      pointer-events: none;\
+      z-index:0;\
+    \}\
+    header \{\
+      display: flex;\
+      align-items: center;\
+      justify-content: space-between;\
+      padding: 24px 26px 18px 26px;\
+      background:\
+        linear-gradient(90deg,var(--primary),var(--secondary)), \
+        url('https://www.transparenttextures.com/patterns/diagmonds-light.png');\
+      backdrop-filter: blur(12px);\
+      box-shadow: var(--shadow);\
+      border-radius: 0 0 28px 28px;\
+      margin-bottom: 10px;\
+      position: sticky; top: 0; z-index: 2;\
+    \}\
+    .logo \{\
+      width: 54px;\
+      height: 54px;\
+      border-radius: 16px;\
+      background: linear-gradient(135deg,#f97316,var(--primary));\
+      box-shadow: 0 0 26px rgba(124,58,237,0.32);\
+      display: flex;\
+      align-items: center;\
+      justify-content: center;\
+      font-weight: 800; color: white; font-size:2rem;\
+      border: 2px solid #fff3;\
+    \}\
+    nav \{\
+      background: var(--bghaze);\
+      padding: 8px 12px;\
+      border-radius: 15px;\
+      box-shadow: 0 4px 12px rgba(124,58,237,0.09);\
+      display: flex;\
+      gap: 16px;\
+      position: relative;\
+      z-index: 1;\
+    \}\
+    nav a \{\
+      color: #faffff;\
+      text-decoration:none;\
+      font-weight:600;\
+      padding:6px 16px;\
+      border-radius:11px;\
+      position:relative;\
+      opacity:0.93;\
+      background: transparent;\
+      box-shadow: none;\
+    \}\
+    nav a.active \{\
+      background: linear-gradient(90deg,var(--primary),var(--secondary));\
+      box-shadow: 0 6px 18px 0 rgba(124,58,237,0.13);\
+      color: #fff;\
+    \}\
+    nav a:hover \{\
+      background:rgba(124,58,237,0.13);\
+      box-shadow:0 5px 14px 0 rgba(124,58,237,0.07);\
+      color:#fff;\
+    \}\
+    .container \{\
+      max-width:1100px;margin:28px auto 0 auto;padding:0 20px;\
+    \}\
+    .card \{\
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));\
+      backdrop-filter: blur(1.7px);\
+      padding:22px;\
+      border-radius:18px;\
+      box-shadow:var(--shadow);\
+      border:1px solid rgba(255,255,255,0.04);\
+      margin: 18px 0;\
+      position:relative;\
+      z-index:1;\
+    \}\
+    .btn \{\
+      background: linear-gradient(90deg,var(--primary),var(--secondary));\
+      border: none;\
+      color: white;\
+      padding: 10px 18px;\
+      border-radius: 11px;\
+      font-weight: 700;\
+      cursor: pointer;\
+      box-shadow: 0 3px 13px rgba(31,46,110,0.14);\
+      margin: 4px 0;\
+      font-size: 1rem;\
+    \}\
+    .btn:active \{ opacity:0.85; \}\
+    .muted \{ color:var(--muted); \}\
+    .page \{ display: none; \}\
+    .page.active \{ display: block; \}\
+    .quiz-q \{ padding:12px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.03), transparent);margin-bottom:12px; box-shadow:0 0 8px rgba(120,60,237,0.05);\}\
+    .option \{padding:10px;border-radius:10px;background:rgba(255,255,255,0.03);cursor:pointer;border:1px solid rgba(255,255,255,0.03);\}\
+    .option.selected\{outline:2px solid rgba(6,182,212,0.16);\}\
+    .options\{display:flex;flex-direction:column;gap:8px;margin-top:8px;\}\
+    .flashcard\{width:320px;height:180px;border-radius:13px;background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)), url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');display:flex;align-items:center;justify-content:center; box-shadow: var(--shadow);\}\
+    #mindArea\{min-height:320px;border-radius:12px;padding:12px;border:1px dashed rgba(255,255,255,0.06);position:relative;\}\
+    .node\{position:absolute;padding:10px 14px;border-radius:13px;background:rgba(255,255,255,0.055);cursor:pointer;color:#3f2cae;font-weight:600;\}\
+    /* Subtle texture overlay for cards */\
+    .card:before \{\
+      content: '';\
+      position: absolute; top:0;left:0;width:100%;height:100%;\
+      background: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');\
+      opacity: 0.11;\
+      pointer-events: none;\
+      border-radius:18px;\
+    \}\
+    .leaderboard-card \{display:flex;align-items:center;gap:11px;\}\
+    .leader-rank \{\
+      font-size:1.25rem;\
+      font-weight:900;\
+      color:var(--primary);\
+      margin-right:8px;\
+      filter: drop-shadow(0 4px 6px var(--secondary));\
+      text-shadow: 0 3px 10px #432fae99;\
+    \}\
+  </style>\
+</head>\
+<body>\
+  <script>\
+    // Play background music\
+    window.onload=function()\{\
+      var audio=document.getElementById('bgmusic');\
+      audio.volume=0.4;\
+      try\{audio.play();\}catch(e)\{\}\
+    \}\
+  </script>\
+  <header>\
+    <div style="display:flex;gap:12px;align-items:center">\
+      <div class="logo" title="QuestLearn Logo">QL</div>\
+      <div>\
+        <div style="font-weight:800;font-size:1.6rem">QuestLearn</div>\
+      </div>\
+    </div>\
+    <nav>\
+      <a href="#" data-target="dashboard" class="active">Home</a>\
+      <a href="#" data-target="lessons">Lessons</a>\
+      <a href="#" data-target="quiz">Quiz</a>\
+      <a href="#" data-target="flashcards">Flashcards</a>\
+      <a href="#" data-target="mindmap">Mind Map</a>\
+      <a href="#" data-target="leaderboard">Leaderboard</a>\
+    </nav>\
+  </header>\
+\
+  <div class="container">\
+    <!-- DASHBOARD -->\
+    <section id="dashboard" class="page active">\
+      <!-- Hero Card -->\
+      <div class="card" style="background:linear-gradient(135deg, rgba(124,58,237,0.15), rgba(6,182,212,0.08)); padding:40px 30px; text-align:center; margin-bottom:24px;">\
+        <h1 style="font-size:2.8rem; margin:0 0 16px 0; text-shadow:0 8px 26px #4131bf99; background: linear-gradient(90deg, #fff 0%, #c7d2fe 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Welcome to QuestLearn!</h1>\
+        <p class="muted" style="font-size:1.15rem; max-width:680px; margin:0 auto 28px auto; line-height:1.6;">\
+          Experience AI-powered learning designed for you. Create personalized quizzes, flashcards, and mind maps instantly.\
+        </p>\
+        <div style="display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;">\
+          <input id="studentName" placeholder="Enter your name" style="padding:14px 20px;border-radius:12px;border:2px solid rgba(124,58,237,0.3);background:rgba(255,255,255,0.08);font-size:1rem;min-width:240px;color:#fff;" />\
+          <button class="btn" onclick="goTo('lessons')" style="padding:14px 28px;font-size:1.05rem;">\uc0\u55357 \u56960  Start Learning</button>\
+        </div>\
+      </div>\
+\
+      <!-- Feature Cards Grid -->\
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:24px;">\
+        <!-- Quiz Card -->\
+        <div class="card" style="text-align:center;padding:28px 20px;cursor:pointer;transition:transform 0.3s;" onclick="goTo('quiz')" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">\
+          <div style="font-size:3rem;margin-bottom:12px;">\uc0\u55357 \u56541 </div>\
+          <h3 style="margin:0 0 8px 0;font-size:1.3rem;">Smart Quizzes</h3>\
+          <p class="muted" style="font-size:0.95rem;margin:0;">AI-generated questions tailored to your level</p>\
+        </div>\
+\
+        <!-- Flashcards Card -->\
+        <div class="card" style="text-align:center;padding:28px 20px;cursor:pointer;transition:transform 0.3s;" onclick="goTo('flashcards')" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">\
+          <div style="font-size:3rem;margin-bottom:12px;">\uc0\u55356 \u57268 </div>\
+          <h3 style="margin:0 0 8px 0;font-size:1.3rem;">Flashcards</h3>\
+          <p class="muted" style="font-size:0.95rem;margin:0;">Master concepts with interactive study cards</p>\
+        </div>\
+\
+        <!-- Mind Map Card -->\
+        <div class="card" style="text-align:center;padding:28px 20px;cursor:pointer;transition:transform 0.3s;" onclick="goTo('mindmap')" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">\
+          <div style="font-size:3rem;margin-bottom:12px;">\uc0\u55358 \u56800 </div>\
+          <h3 style="margin:0 0 8px 0;font-size:1.3rem;">Mind Maps</h3>\
+          <p class="muted" style="font-size:0.95rem;margin:0;">Visualize complex topics with AI-created maps</p>\
+        </div>\
+\
+        <!-- Leaderboard Card -->\
+        <div class="card" style="text-align:center;padding:28px 20px;cursor:pointer;transition:transform 0.3s;" onclick="goTo('leaderboard')" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">\
+          <div style="font-size:3rem;margin-bottom:12px;">\uc0\u55356 \u57286 </div>\
+          <h3 style="margin:0 0 8px 0;font-size:1.3rem;">Leaderboard</h3>\
+          <p class="muted" style="font-size:0.95rem;margin:0;">Track your progress and compete with peers</p>\
+        </div>\
+      </div>\
+\
+      <!-- Stats Banner -->\
+      <div class="card" style="margin-top:24px;background:linear-gradient(90deg, rgba(124,58,237,0.1), rgba(6,182,212,0.1));padding:24px;">\
+        <div style="display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;gap:20px;text-align:center;">\
+          <div>\
+            <div style="font-size:2rem;font-weight:800;color:var(--primary);">\uc0\u8734 </div>\
+            <div class="muted" style="font-size:0.9rem;">AI-Generated Questions</div>\
+          </div>\
+          <div>\
+            <div style="font-size:2rem;font-weight:800;color:var(--secondary);">4</div>\
+            <div class="muted" style="font-size:0.9rem;">Engineering Subjects</div>\
+          </div>\
+          <div>\
+            <div style="font-size:2rem;font-weight:800;color:var(--primary);">100%</div>\
+            <div class="muted" style="font-size:0.9rem;">Personalized Learning</div>\
+          </div>\
+        </div>\
+      </div>\
+    </section>\
+\
+    <!-- LESSONS -->\
+    <section id="lessons" class="page card">\
+      <h3>Engineering Subjects</h3>\
+      <p class="muted">4 subjects. Pick one \'97 AI will help you learn faster than ever.</p>\
+      <div id="subjectsList" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px"></div>\
+      <div id="lessonDetail" style="margin-top:12px"></div>\
+    </section>\
+\
+    <!-- QUIZ -->\
+    <section id="quiz" class="page card">\
+      <h3 id="quizTitle">Quiz</h3>\
+      <div style="display:flex;gap:11px;margin-bottom:15px">\
+        <button class="btn" onclick="regenerateQuestions()">AI Regenerate Questions</button>\
+        <button class="btn" onclick="difficultyAdjust()">AI Make Harder</button>\
+      </div>\
+      <div id="quizArea"></div>\
+      <div style="margin-top:8px">\
+        <button class="btn" onclick="submitQuiz()">Submit Answers</button>\
+        <button class="btn" style="background:rgba(255,255,255,0.06)" onclick="resetQuiz()">Reset</button>\
+      </div>\
+      <div id="quizResult" style="margin-top:14px"></div>\
+    </section>\
+\
+    <!-- FLASHCARDS -->\
+    <section id="flashcards" class="page card">\
+      <h3>Flashcards</h3>\
+      <div style="display:flex;gap:10px;margin-bottom:13px">\
+        <input id="fcTopic" placeholder="Topic (optional)" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.04)" />\
+        <button class="btn" onclick="suggestFlashcards()">AI Suggest Flashcards</button>\
+      </div>\
+      <div style="display:flex;gap:13px;align-items:center">\
+        <div id="flashcard" class="flashcard">No flashcards yet.</div>\
+        <div style="display:flex;flex-direction:column;gap:11px">\
+          <button class="btn" onclick="prevCard()">Prev</button>\
+          <button class="btn" onclick="flipCard()">Flip</button>\
+          <button class="btn" onclick="nextCard()">Next</button>\
+        </div>\
+      </div>\
+    </section>\
+\
+    <!-- MINDMAP -->\
+    <section id="mindmap" class="page card">\
+      <h3>Mind Map</h3>\
+      <div style="display:flex;gap:10px;margin-bottom:13px">\
+        <input id="mindTopic" placeholder="Topic for mind map suggestion" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.04)" />\
+        <button class="btn" onclick="suggestMindNodes()">AI Suggest Nodes</button>\
+      </div>\
+      <div id="mindArea"></div>\
+    </section>\
+\
+    <!-- LEADERBOARD -->\
+    <section id="leaderboard" class="page card">\
+      <h3>Leaderboard</h3>\
+      <div id="leaderboardList" style="margin-top:10px"></div>\
+    </section>\
+  </div>\
+\
+  <script>\
+    // navigation\
+    const links = document.querySelectorAll('header nav a');\
+    links.forEach(a => a.addEventListener('click', e => \{ e.preventDefault(); goTo(a.dataset.target); \}));\
+    function goTo(id) \{\
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));\
+      document.getElementById(id).classList.add('active');\
+      links.forEach(l => l.classList.toggle('active', l.dataset.target === id));\
+      if (id === 'leaderboard') loadLeaderboard();\
+    \}\
+\
+    // Subjects and lessons\
+    const subjects = [\
+      \{ id: 'cs', title: 'Computer Science', desc: 'AI, Algorithms, Systems, Networks.' \},\
+      \{ id: 'me', title: 'Mechanical Engineering', desc: 'Mechanics, Thermodynamics, Machine Design.' \},\
+      \{ id: 'ee', title: 'Electrical Engineering', desc: 'Circuits, Signals, Power, Control.' \},\
+      \{ id: 'ce', title: 'Civil Engineering', desc: 'Structures, Materials, Surveying.' \}\
+    ];\
+\
+    function renderSubjects() \{\
+      const container = document.getElementById('subjectsList');\
+      container.innerHTML = '';\
+      subjects.forEach(s => \{\
+        const c = document.createElement('div');\
+        c.className = 'card';\
+        c.style.boxShadow = '0 6px 18px #432fae22';\
+        c.innerHTML =\
+          `<h4 style="margin:0 0 9px 0;">$\{s.title\}</h4>\
+           <p class="muted" style="margin-bottom:8px;">$\{s.desc\}</p>\
+           <div style="margin-top:8px"><button class="btn" onclick="openSubject('$\{s.id\}')">Open Subject (+AI)</button></div>`;\
+        container.appendChild(c);\
+      \});\
+    \}\
+    renderSubjects();\
+\
+    // state\
+    let currentSubject = null;\
+    let quizQuestions = [];\
+    let cards = []; \
+    let fIndex = 0, flipped = false;\
+\
+    async function openSubject(id) \{\
+      currentSubject = subjects.find(s => s.id === id);\
+      document.getElementById('lessonDetail').innerHTML =\
+        `<div class="card">\
+          <h4>$\{currentSubject.title\}</h4>\
+          <p class="muted">$\{currentSubject.desc\}</p>\
+          <div style="margin-top:8px">\
+            <button class="btn" onclick="generateAllForSubject()">AI Generate Quizzes / Flashcards / Mindmap</button>\
+          </div>\
+        </div>`;\
+      goTo('lessons');\
+    \}\
+\
+    async function generateAllForSubject() \{\
+      if (!currentSubject) return alert('Select a subject first.');\
+      try \{\
+        document.getElementById('lessonDetail').innerHTML += `<div style="color:var(--muted);margin-top:8px">Generating resources (this may take a few seconds)\'85</div>`;\
+        const qResp = await fetch('/api/generate-questions', \{\
+          method: 'POST',\
+          headers: \{ 'Content-Type': 'application/json' \},\
+          body: JSON.stringify(\{ subject: currentSubject.title, count: 5 \})\
+        \});\
+        const qJson = await qResp.json();\
+        if (!qJson.ok) throw new Error(qJson.error || 'Failed to generate questions');\
+        quizQuestions = qJson.questions;\
+        // set flashcards\
+        const fResp = await fetch('/api/suggest-flashcards', \{\
+          method: 'POST',\
+          headers: \{ 'Content-Type': 'application/json' \},\
+          body: JSON.stringify(\{ subject: currentSubject.title, topic: currentSubject.title \})\
+        \});\
+        const fJson = await fResp.json();\
+        cards = (fJson.ok && Array.isArray(fJson.flashcards)) ? fJson.flashcards : [\{ front: 'No cards', back: 'AI failed to generate' \}];\
+        fIndex = 0; flipped = false; renderCard();\
+        // mind nodes\
+        const mResp = await fetch('/api/suggest-mindnodes', \{\
+          method: 'POST',\
+          headers: \{ 'Content-Type': 'application/json' \},\
+          body: JSON.stringify(\{ topic: currentSubject.title \})\
+        \});\
+        const mJson = await mResp.json();\
+        document.getElementById('lessonDetail').innerHTML += `<div style="margin-top:12px"><strong>AI generated quiz & flashcards.</strong></div>`;\
+        renderQuiz();\
+        renderMindMapFromNodes(mJson.ok ? mJson.nodes : []);\
+        goTo('quiz');\
+      \} catch (err) \{\
+        alert('Error generating subject resources: ' + err.message);\
+      \}\
+    \}\
+\
+    function renderQuiz() \{\
+      const quizArea = document.getElementById('quizArea');\
+      quizArea.innerHTML = '';\
+      document.getElementById('quizTitle').textContent = `Quiz \'97 $\{currentSubject ? currentSubject.title : 'Topic'\}`;\
+      quizQuestions.forEach((it, idx) => \{\
+        const div = document.createElement('div');\
+        div.className = 'quiz-q';\
+        div.innerHTML = `<div><strong>Q$\{idx+1\}.</strong> $\{it.q\}</div>`;\
+        const opts = document.createElement('div'); opts.className = 'options';\
+        it.options.forEach((op, i) => \{\
+          const o = document.createElement('div');\
+          o.className = 'option'; o.innerText = op; o.dataset.q = idx; o.dataset.i = i;\
+          o.addEventListener('click', () => \{\
+            document.querySelectorAll(`.option[data-q="$\{idx\}"]`).forEach(x => x.classList.remove('selected'));\
+            o.classList.add('selected');\
+          \});\
+          opts.appendChild(o);\
+        \});\
+        div.appendChild(opts);\
+        quizArea.appendChild(div);\
+      \});\
+    \}\
+\
+    async function regenerateQuestions() \{\
+      if (!currentSubject) return alert('Open a subject first.');\
+      try \{\
+        const resp = await fetch('/api/generate-questions', \{\
+          method: 'POST',\
+          headers: \{ 'Content-Type': 'application/json' \},\
+          body: JSON.stringify(\{ subject: currentSubject.title, count: 5 \})\
+        \});\
+        const json = await resp.json();\
+        if (!json.ok) throw new Error(json.error || 'AI failed');\
+        quizQuestions = json.questions;\
+        renderQuiz();\
+        alert('Questions regenerated by AI.');\
+      \} catch (err) \{\
+        alert('Error: ' + err.message);\
+      \}\
+    \}\
+\
+    async function difficultyAdjust() \{\
+      if (!currentSubject) return alert('Open a subject first.');\
+      try \{\
+        const resp = await fetch('/api/generate-questions', \{\
+          method: 'POST',\
+          headers: \{ 'Content-Type': 'application/json' \},\
+          body: JSON.stringify(\{ subject: currentSubject.title, count: 5, difficulty: 'hard' \})\
+        \});\
+        const json = await resp.json();\
+        if (!json.ok) throw new Error(json.error || 'AI failed');\
+        quizQuestions = json.questions;\
+        renderQuiz();\
+        alert('Questions adjusted to harder difficulty by AI.');\
+      \} catch (err) \{\
+        alert('Error: ' + err.message);\
+      \}\
+    \}\
+\
+    async function submitQuiz() \{\
+      try \{\
+        const answers = quizQuestions.map((q, idx) => \{\
+          const sel = document.querySelector(`.option.selected[data-q="$\{idx\}"]`);\
+          return \{ q: q.q, selected: sel ? Number(sel.dataset.i) : null, correct: q.answer, options: q.options \};\
+        \});\
+        const studentName = (document.getElementById('studentName').value || 'Anonymous').trim();\
+        const resp = await fetch('/api/analyze-performance', \{\
+          method: 'POST',\
+          headers: \{ 'Content-Type': 'application/json' \},\
+          body: JSON.stringify(\{ answers, studentName, awardPerCorrect: 10 \})\
+        \});\
+        const json = await resp.json();\
+        if (!json.ok) throw new Error(json.error || 'Analyze failed');\
+        document.getElementById('quizResult').innerHTML = `<div class="card"><strong>Feedback:</strong><p class="muted">$\{json.feedback\}</p><div style="margin-top:8px"><strong>Points earned:</strong> $\{json.pointsEarned\}</div></div>`;\
+        if (json.harderQuestion) \{\
+          quizQuestions.push(json.harderQuestion);\
+          renderQuiz();\
+          document.getElementById('quizResult').innerHTML += `<div style="margin-top:8px" class="muted"><strong>AI added a harder follow-up question for practice.</strong></div>`;\
+        \}\
+        loadLeaderboard();\
+      \} catch (err) \{\
+        alert('Error submitting quiz: ' + err.message);\
+      \}\
+    \}\
+\
+    function resetQuiz() \{\
+      document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));\
+      document.getElementById('quizResult').innerHTML = '';\
+    \}\
+\
+    function renderCard() \{\
+      const el = document.getElementById('flashcard');\
+      if (!cards || cards.length === 0) \{ el.innerHTML = 'No flashcards'; return; \}\
+      const c = cards[fIndex];\
+      el.innerHTML = flipped\
+        ? `<div style="font-weight:700;color:#ffd166">$\{c.back\}</div>`\
+        : `<div style="font-weight:700">$\{c.front\}</div>`;\
+    \}\
+    function flipCard() \{ flipped = !flipped; renderCard(); \}\
+    function nextCard() \{ fIndex = (fIndex + 1) % cards.length; flipped = false; renderCard(); \}\
+    function prevCard() \{ fIndex = (fIndex - 1 + cards.length) % cards.length; flipped = false; renderCard(); \}\
+\
+    async function suggestFlashcards() \{\
+      if (!currentSubject) return alert('Open a subject first.');\
+      const topic = document.getElementById('fcTopic').value.trim() || currentSubject.title;\
+      try \{\
+        const resp = await fetch('/api/suggest-flashcards', \{\
+          method: 'POST',\
+          headers: \{ 'Content-Type': 'application/json' \},\
+          body: JSON.stringify(\{ subject: currentSubject.title, topic, count: 6 \})\
+        \});\
+        const json = await resp.json();\
+        if (!json.ok) throw new Error(json.error || 'AI failed');\
+        cards = json.flashcards;\
+        fIndex = 0; flipped = false; renderCard();\
+        goTo('flashcards');\
+      \} catch (err) \{\
+        alert('Error: ' + err.message);\
+      \}\
+    \}\
+\
+    function renderMindMapFromNodes(nodes) \{\
+      const mind = document.getElementById('mindArea');\
+      mind.innerHTML = '';\
+      if (!Array.isArray(nodes) || nodes.length === 0) \{\
+        mind.innerHTML = '<div class="muted">No nodes generated yet. Click "AI Suggest Nodes".</div>';\
+        return;\
+      \}\
+      nodes.forEach((n, i) => \{\
+        const el = document.createElement('div');\
+        el.className = 'node';\
+        el.style.left = (20 + (i % 3) * 180) + 'px';\
+        el.style.top = (20 + Math.floor(i / 3) * 110) + 'px';\
+        const title = typeof n === 'string' ? n : n.title;\
+        const desc = typeof n === 'string' ? '' : (n.description || '');\
+        el.innerHTML = `<strong>$\{escapeHtml(title)\}</strong><div style="font-size:12px;margin-top:6px;color:#402abb">$\{escapeHtml(desc)\}</div>`;\
+        mind.appendChild(el);\
+      \});\
+    \}\
+\
+    function escapeHtml(s) \{ return String(s).replace(/[&<>"']/g, function (m) \{ return (\{ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '\\'' \})[m]; \}); \}\
+\
+    async function suggestMindNodes() \{\
+      const topic = document.getElementById('mindTopic').value.trim() || (currentSubject ? currentSubject.title : '');\
+      if (!topic) return alert('Enter topic or open subject.');\
+      try \{\
+        const resp = await fetch('/api/suggest-mindnodes', \{\
+          method: 'POST',\
+          headers: \{ 'Content-Type': 'application/json' \},\
+          body: JSON.stringify(\{ topic, count: 6 \})\
+        \});\
+        const json = await resp.json();\
+        if (!json.ok) throw new Error(json.error || 'AI failed');\
+        renderMindMapFromNodes(json.nodes);\
+        goTo('mindmap');\
+      \} catch (err) \{\
+        alert('Error: ' + err.message);\
+      \}\
+    \}\
+\
+    async function loadLeaderboard() \{\
+      try \{\
+        const resp = await fetch('/api/leaderboard');\
+        const json = await resp.json();\
+        if (!json.ok) throw new Error('Failed to load leaderboard');\
+        const container = document.getElementById('leaderboardList');\
+        container.innerHTML = '';\
+        json.leaderboard.forEach((u, i) => \{\
+          const el = document.createElement('div');\
+          el.className = 'card leaderboard-card';\
+          el.style.marginBottom = '7px';\
+          el.innerHTML =\
+            `<span class="leader-rank">$\{i+1\}</span> <strong>$\{escapeHtml(u.name)\}</strong> \'97 $\{u.points\} pts`;\
+          container.appendChild(el);\
+        \});\
+      \} catch (err) \{\
+        console.error(err);\
+      \}\
+    \}\
+\
+    window.addEventListener('load', () => \{\
+      document.getElementById('flashcard').textContent = 'No flashcards yet. Open a subject and AI-generate.';\
+      document.getElementById('mindArea').innerHTML = '<div class="muted">Mind map empty. Use AI Suggest.';\
+    \});\
+  </script>\
+</body>\
+</html>}
